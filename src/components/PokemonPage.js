@@ -15,10 +15,16 @@ function PokemonPage() {
       .then((data) => setPokemon(data))
   }, [])
 
+  //function to handle search events
   function handleSearch(event) {
     setSearch(event.target.value)
   }
+  //function to handle adding new pokemon to state
+  function addNewPokemon(newPokemon) {
+    setPokemon([...pokemonList, newPokemon])
+  }
 
+  //filter pokemon searches to display
   const pokemonToDisplay = pokemonList.filter((pokemon) => {
     const name = pokemon.name
     if (!search){
@@ -29,12 +35,11 @@ function PokemonPage() {
     }
   })
 
-
   return (
     <Container>
       <h1>Pokemon Searcher</h1>
       <br />
-      <PokemonForm />
+      <PokemonForm handleNewPokemon={addNewPokemon}/>
       <br />
       <Search onSearch={handleSearch} />
       <br />

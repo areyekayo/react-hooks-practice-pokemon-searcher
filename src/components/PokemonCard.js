@@ -4,7 +4,8 @@ import { Card } from "semantic-ui-react";
 function PokemonCard({id, name, hp, sprites}) {
   const front = sprites.front;
   const back = sprites.back;
-
+  
+  //set state to track clicks that will show pokemon back image
   const [isClicked, setClicked] = useState(false);
 
   function handleClick(){
